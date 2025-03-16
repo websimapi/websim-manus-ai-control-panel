@@ -1,0 +1,35 @@
+{
+  "name": "manus-ai-server",
+  "version": "1.0.0",
+  "description": "Node.js server for Manus AI with WebSocket connection to frontend",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js",
+    "setup": "mkdir -p client && cp index.html client/index.html && npm install"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://gist.github.com/jlia0/db0a9695b3ca7609c9b1a08dcbf872c9"
+  },
+  "keywords": [
+    "manus",
+    "ai",
+    "websocket",
+    "server"
+  ],
+  "author": "Manus Team",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2",
+    "ws": "^8.14.2",
+    "uuid": "^9.0.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}
+

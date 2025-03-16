@@ -172,6 +172,10 @@ function executeCommand(commandStr, ws) {
 wss.on('connection', (ws) => {
   console.log('Client connected');
   
+  // Assign a unique client ID
+  const clientId = uuidv4();
+  ws.clientId = clientId;
+  
   // Send current system info to new client
   ws.send(JSON.stringify({
     type: 'systemInfo',
@@ -212,6 +216,7 @@ Available commands:
 - clear: Clear completed tasks
 - exec <command>: Execute a shell command
 - kill <task_id>: Kill a running task
+- collaborators: Show connected clients
             `.trim()
           }));
         } else if (command === 'info') {
@@ -239,6 +244,13 @@ System Information:
               ).join('\n')}`
             }));
           }
+        } else if (command === 'collaborators') {
+          // Count connected clients
+          const clientCount = wss.clients.size;
+          ws.send(JSON.stringify({
+            sender: 'System',
+            message: `There are currently ${clientCount} client(s) connected to this server.`
+          }));
         } else if (command === 'clear') {
           // Remove completed and failed tasks
           const initialCount = tasks.length;
@@ -338,4 +350,3 @@ server.listen(PORT, () => {
   console.log(`Manus AI Server running on port ${PORT}`);
   console.log(`Client interface available at http://localhost:${PORT}`);
 });
-

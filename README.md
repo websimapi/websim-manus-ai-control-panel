@@ -1,6 +1,6 @@
 # Manus AI Server
 
-A Node.js server with WebSocket connectivity that enables Manus AI to operate on a Linux system. This project provides a web-based control panel for interacting with Manus AI.
+A Node.js server with WebSocket connectivity that enables Manus AI to operate on a Linux system. This project provides a web-based control panel for interacting with Manus AI, featuring real-time collaboration capabilities.
 
 ## Original Source
 
@@ -15,6 +15,11 @@ This project is based on the implementation shared at:
 - Task tracking and management
 - Web-based control panel interface
 - Linux-optimized implementation
+- **Real-time collaboration features:**
+  - Team chat with typing indicators
+  - Shared command history across clients
+  - User presence indicators
+  - Command broadcasting to all clients
 
 ## Installation
 

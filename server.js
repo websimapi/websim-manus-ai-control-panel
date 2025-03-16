@@ -242,7 +242,7 @@ System Information:
               message: `Active Tasks:\n${tasks.map(t => 
                 `- ID: ${t.id}\n  Name: ${t.name}\n  Status: ${t.status}\n  Progress: ${t.progress}%\n  Created: ${new Date(t.createdAt).toLocaleString()}`
               ).join('\n')}`
-            }));
+            ));
           }
         } else if (command === 'collaborators') {
           // Count connected clients
@@ -339,6 +339,27 @@ setInterval(() => {
            new Date(task.createdAt) > oneHourAgo;
   });
 }, 60 * 60 * 1000); // 1 hour
+
+// Define routes to serve project files for download
+app.get('/server.js', (req, res) => {
+  res.setHeader('Content-Type', 'text/javascript');
+  res.sendFile(path.join(__dirname, 'server.js'));
+});
+
+app.get('/package.json', (req, res) => {
+  res.setHeader('Content-Type', 'application/json');
+  res.sendFile(path.join(__dirname, 'package.json'));
+});
+
+app.get('/README.md', (req, res) => {
+  res.setHeader('Content-Type', 'text/markdown');
+  res.sendFile(path.join(__dirname, 'README.md'));
+});
+
+app.get('/.gitignore', (req, res) => {
+  res.setHeader('Content-Type', 'text/plain');
+  res.sendFile(path.join(__dirname, '.gitignore'));
+});
 
 // Route to serve the client
 app.get('/', (req, res) => {
